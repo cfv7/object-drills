@@ -135,3 +135,209 @@ var hobbitStuff = {
 };
 
 console.log(hobbitStuff.meals[3]);
+
+// Arrays of objects
+
+// Create 3-5 objects, each with a name and a job_title. Use people you know,
+// or characters from fiction, or your own inventions.
+// Store these objects in an array.
+// Iterate over the array and use console.log to show each person's job title and name.
+var myArray = [
+
+{
+  name: 'peter',
+  job_title: 'bootcamper',
+  boss: 'lucy'
+},
+
+{
+  name: 'colin',
+  job_title:'unemployed',
+  boss: 'lucy'
+},
+
+{
+  name: 'joe',
+  job_title: 'plumber',
+},
+
+{
+  name: 'jill',
+  job_title: 'yogi',
+  boss: 'lucy'
+}
+
+];
+
+function showInfo(array){
+  for (let i = 0; i < array.length; i++){
+    var m = array[i];
+
+    // if (!myArray[i].hasOwnProperty('boss')){
+    if (m.boss === undefined){
+      console.log(`${m.job_title} ${m.name} doesn't report to anybody.`)
+    }
+    else{
+    //console.log('name: ' + myArray[i].name + '   ' + 'job title: ' + myArray[i].job_title);  
+    console.log(`${m.job_title} ${m.name} reports to ${m.boss}.`)
+    }
+  }  
+}
+
+showInfo(myArray);
+
+// Properties that aren't there
+
+// Expand on the previous example by adding a boss property to everyone except the owner of the company.
+// Change the iteration to print out messages in this format: "${title} ${name} reports to ${boss}.". 
+// For example: Junior Engineer Bob reports to Fred..
+// What gets printed out for the owner?
+// Adjust the message so that people with no boss display "${title} ${name} doesn't report to anybody." 
+// - for example, Founder John doesn't report to anybody.
+
+// Cracking the code 2.0
+
+// Redo your "Cracking the code" problem from Day 1 https://gist.github.com/tparveen/76e0a6042fc6e0f02a2f7e0c56994715 
+// but this time use an object to store the codes. Instead of having the function accept a word,
+// have the function accept a string and crack the code from the string.
+
+function decode(word){
+// Write a function called decode which takes an encoded word as an argument,
+// and returns the correct decoded character.
+  if (word.charAt(0) === 'a'){
+    console.log(word.charAt(1))
+    return
+  }
+  if (word.charAt(0) === 'b'){
+    console.log(word.charAt(2))
+    return
+  }
+  if (word.charAt(0) === 'c'){
+    console.log(word.charAt(3))
+    return
+  }
+  if (word.charAt(0) === 'd'){
+    console.log(word.charAt(4))
+    return
+  }
+  if (word.charAt(0) !== 'a' || 'b' || 'c' || 'd'){
+    console.log("")
+    return
+  }
+}
+
+var codes = {
+  'a':1,
+  'b':2,
+  'c':3,
+  'd':4
+  // test: function(word, array){
+  //   if (word.charAt(0) !== 'a' ||  'b' || 'c' || 'd'){
+  //     array.push(" ");
+  //     return false;
+  //   }
+  // }
+};
+
+function decodeTwo(string){
+  // we need to split the string and be able to evaluate each individual word
+  var splitNew = string.split(" ");
+  var ourCollection = [ ];
+  for (let i = 0; i < splitNew.length; i++){
+    // declare a var for current word we grabbed
+    var currentWord = splitNew[i];
+
+    // if first letter of current word is not defined in Codes object
+    // push a whitespace
+
+    console.log(currentWord)
+    // console.log(currentWord.charAt(0))
+    var firstLetter = currentWord.charAt(0)
+    console.log("firstLetter: " + firstLetter);
+    var code = codes[firstLetter]
+    console.log("code: " + code)
+    if (code === undefined) {
+      ourCollection.push('');
+    }
+    else {
+      ourCollection.push(currentWord.charAt(code))
+    }
+    // console.log(code)
+
+    // // for in loop and test that word against properties in codes object
+    // for (var key in codes){
+    //     if (currentWord.charAt(0) === key){
+    //       ourCollection.push(currentWord.charAt(codes[key]));
+    //     }
+    // }
+    // if the loop is complete and nothing pushed to ourCollection then push a whitespace
+    // if the first char in word is a,b,c, or d return corresponding value
+    // push the corresponding value to array
+  }
+  console.log(ourCollection)
+  return ourCollection.join();
+}
+
+decodeTwo('craft block argon meter bells brown croon droop')
+
+// Write a function that prints the following: (possibly using Objects as your primary data structure)
+
+// Gandolf the White is a Wizard of the Middle Earth
+// Bilbo Baggings is a Hobbit of the Shire
+// Frodo Baggings is a Hobbit of the Shire
+// Aragorn son of Arathon is a Man of the Dunnedain
+// Legolas is a Elf of the Woodland Realm
+// What if you want to add another character such as -
+
+// Arwen Undomiel is a Half-Elf of Rivendell
+// What if you want to add a functionality such as use of weapon for each character - for example
+
+// Gandolf the White is a Wizard of the Middle Earth who uses a wizard staff
+// Bilbo Baggins is a Hobbit of the Shire who uses the Ring
+// Frodo ... String and Barrow Blade
+// Aragon .... Anduril
+// Legolas ... Bow and Arrow
+// Arwen .... Hadhafang
+
+// function lotR(){
+//   var x = [
+//     {
+//      name:'Gandolf the White',
+//      type:'Wizard',
+//      origin:'Middle Earth',
+//      weapon: 'wizard staff'
+//     },
+//     {
+//      name:'Bilbo Baggings',
+//      type:'Hobbit',
+//      origin:'Shire',
+//      weapon:'the Ring'
+//     },
+//     {
+//      name:'Frodo Baggings',
+//      type:'Hobbit',
+//      origin:'Shire',
+//      weapon:'String and Barrow Blade'
+//     },
+//     {
+//      name:'Aragorn son of Arathon',
+//      type:'Man',
+//      origin:'Dunnedain'
+//      weapon:'Anduril'
+//     },
+    
+//     {
+//      name:'Legolas',
+//      type:'Elf',
+//      origin:'Woodland Realm'
+//      weapon:'Bow and Arrow'
+//     },
+//   ]
+//  for (var key in x){
+//   console.log(x.name + ' is a ' + x.type + ' of the ' + x.origin + ' who uses the ' x.weapon'.')
+// }
+
+
+
+
+
