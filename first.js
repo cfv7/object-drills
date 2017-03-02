@@ -1,5 +1,6 @@
 // authors: Colin & Peter
 // date: 3.1.17
+// title: object drills review
 
 // foo => 'bar'
 // answerToUniverse => 42
@@ -253,9 +254,9 @@ function decodeTwo(string){
     console.log(currentWord)
     // console.log(currentWord.charAt(0))
     var firstLetter = currentWord.charAt(0)
-    console.log("firstLetter: " + firstLetter);
+    // console.log("firstLetter: " + firstLetter);
     var code = codes[firstLetter]
-    console.log("code: " + code)
+    // console.log("code: " + code)
     if (code === undefined) {
       ourCollection.push('');
     }
@@ -299,44 +300,182 @@ decodeTwo('craft block argon meter bells brown croon droop')
 // Legolas ... Bow and Arrow
 // Arwen .... Hadhafang
 
-// function lotR(){
-//   var x = [
-//     {
-//      name:'Gandolf the White',
-//      type:'Wizard',
-//      origin:'Middle Earth',
-//      weapon: 'wizard staff'
-//     },
-//     {
-//      name:'Bilbo Baggings',
-//      type:'Hobbit',
-//      origin:'Shire',
-//      weapon:'the Ring'
-//     },
-//     {
-//      name:'Frodo Baggings',
-//      type:'Hobbit',
-//      origin:'Shire',
-//      weapon:'String and Barrow Blade'
-//     },
-//     {
-//      name:'Aragorn son of Arathon',
-//      type:'Man',
-//      origin:'Dunnedain'
-//      weapon:'Anduril'
-//     },
+function lotR(){
+  var x = [
+    {
+     name:'Gandolf the White',
+     type:'Wizard',
+     origin:'Middle Earth',
+     weapon: 'wizard staff'
+    },
+    {
+     name:'Bilbo Baggings',
+     type:'Hobbit',
+     origin:'Shire',
+     weapon:'the Ring'
+    },
+    {
+     name:'Frodo Baggings',
+     type:'Hobbit',
+     origin:'Shire',
+     weapon:'String and Barrow Blade'
+    },
+    {
+     name:'Aragorn son of Arathon',
+     type:'Man',
+     origin:'Dunnedain',
+     weapon:'Anduril'
+    },
     
-//     {
-//      name:'Legolas',
-//      type:'Elf',
-//      origin:'Woodland Realm'
-//      weapon:'Bow and Arrow'
-//     },
-//   ]
-//  for (var key in x){
-//   console.log(x.name + ' is a ' + x.type + ' of the ' + x.origin + ' who uses the ' x.weapon'.')
-// }
+    {
+     name:'Legolas',
+     type:'Elf',
+     origin:'Woodland Realm',
+     weapon:'Bow and Arrow'
+    },
+  ];
+  // console.log(lotR(x[2]));
+  for (let i = 0; i < x.length; i++){
+    console.log(x[i].name + ' is a ' + x[i].type + ' of the ' + x[i].origin + ' who uses the ' + x[i].weapon);
+  }
+}
 
+lotR()
+
+// Take up to 10 minutes to write a function 
+// called makeStudentReport that takes a single argument, data.
+// data is an array of objects. Each object in the array represents a student 
+// and their letter grade for a course — for example, {name: 'Johnny Robot', grade: 'C'}.
+
+// makeStudentReport should return an array of strings. 
+// For each item in data, return a string that looks like this: '[name]: [grade]'. 
+// The name and grade values on the student object should be substituted in.
+
+// you can run `makeStudentsReport`, passing in `scratchData` to test out
+// your function
+var scratchD = [
+  {name: 'Billy Boy', grade: 'D'},
+  {name: 'Serious Sara', grade: 'B'},
+  {name: 'Tepid Tom', grade: 'C'}
+];
+
+
+function makeStudentsReport(data) {
+ for (let i = 0; i < data.length; i++){
+    var sD = data[i];
+    console.log( sD.name + ': ' + sD.grade)
+  };
+}
+
+makeStudentsReport(scratchD)
+
+// Take up to 10 minutes to write a function called enrollInSummerSchool that
+// takes a single argument, students. students is an array of objects, with each object
+// representing a student — for example, {name: 'Tim', status: 'Current student', course: 'Biology'}.
+
+// enrollInSummerSchool should return an array of objects. For each object from the original array,
+// it should return the original name and course, but should update the status to In Summer school. 
+// So, given this input:
+
+var studentData = [
+  {
+    name: 'Tim',
+    status: 'Current student',
+    course: 'Biology'
+  },
+  {
+    name: 'Sue',
+    status: 'Withdrawn',
+    course: 'Mathematics'
+  },
+  {
+    name: 'Liz',
+    status: 'On leave',
+    course: 'Computer science'
+  }
+];
+
+function enrollInSummerSchool(students) {
+  for (let i = 0; i < students.length; i++){
+    var s = students[i]
+      s.status = 'In Summer School';
+      console.log(s);
+  }
+  // console.log(s);
+}
+
+enrollInSummerSchool(studentData)
+
+// // Spend up to 15 minutes writing a function called findById. 
+// // This function takes two arguments items and idNum. items is an array of objects. 
+// // idNum is the id we're trying to find in items.
+
+// // Calling findById([{id: 1, foo: 'bar'},
+// // {id: 2, foo: 'bizz'}], 2) should return {id: 2, foo: 'bizz'}.
+
+// // you can pass in `scratchData` to test out `findByid`
+// // your function
+
+var scratchData = [
+  {id: 22, foo: 'bar'},
+  {id: 28, foo: 'bizz'},
+  {id: 19, foo: 'bazz'}
+];
+
+function findById(items, idNum) {
+  for (let i = 0; i < items.length; i++){
+   var x = items[i];
+   // console.log(x) 
+   if (x.id === idNum){
+      return x;
+    }
+  }
+}
+
+console.log(findById(scratchData, 19))
+
+// Spend up to 20 minutes writing a function called validateKeys.
+// This function takes two arguments, object and expectedKeys. 
+// object is (you guessed it!) an object that we want to valdiate keys for. 
+// expectedKeys is an array of keys that we expect to find on the object.
+
+// validateKeys should return true if object has all of the keys from expectedKeys, 
+// and no additional keys. 
+// It should return false if one or more of the expectedKeys is missing from the object, 
+// or if the object contains extra keys not in expectedKeys.
+
+// running the function with `objectA` and `expectedKeys`
+// should return `true`
+var objectA = {
+  id: 2,
+  name: 'Jane Doe',
+  age: 34,
+  city: 'Chicago'
+}
+
+var objectB = {
+  id: 3,
+  age: 33,
+  city: 'Peoria'
+}
+
+var expectedKeys = [
+  'id', 'name', 'age', 'city'
+];
+
+function validateKeys(object, expectedKeys) { 
+  var ourKeys = Object.keys(object).length;
+  console.log(ourKeys)
+  for (let i = 0; i < expectedKeys.length; i++) {
+    var currentKey = expectedKeys[i];
+    if (!object.hasOwnProperty(currentKey)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(validateKeys(objectB, expectedKeys))
 
 
 
